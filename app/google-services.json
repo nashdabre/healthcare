@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "341025166805",
+    "project_id": "health-care-f95be",
+    "storage_bucket": "health-care-f95be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341025166805:android:4e8aded92ee850ec64995c",
+        "android_client_info": {
+          "package_name": "com.example.unreal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBVur-LmodAiRr06G-YUSkqCp7-5LkUiI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
