@@ -52,10 +52,16 @@ fun BottomNav(navController: NavHostController){
         innerPadding -> NavHost(navController = navController1, startDestination = Routes.Home.routes,
             modifier = Modifier.padding(innerPadding)){
             composable(route = Routes.Home.routes){
-                Home()
+                Home(navController)//navController
             }
+        composable(route = Routes.Doctor.routes){
+            Doctor(navController)//navController
+        }
+        composable(route = Routes.Aritcel.routes){
+            articel(navController)//navController
+        }
         composable(Routes.Profile.routes){
-            Profile()
+            Profile(navController)
         }
         composable(Routes.Notification.routes){
             Notifications()

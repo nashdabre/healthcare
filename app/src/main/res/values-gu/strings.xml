@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">unreal</string>
+    <string name="login">પ્રવેશ</string>
+    <string name="new_user">નવો વપરાશકર્તા? ખાતાને બનાવો</string>
+    <string name="email">ઇમેઇલ</string>
+    <string name="password">પાસવર્ડ</string>
+    <string name="name">નેશ ડાબ્રે</string>
+    <string name="search_bar">તેની માટે શોધી રહ્યા છીએ...</string>
+    <string name="testlab">ચકાસણી પ્રયોગશાળા</string>
+    <string name="finddoc">ડોક્ટર શોધો</string>
+    <string name="healthart">સ્વાસ્થ્ય આર્ટિસેલName</string>
+    <string name="logout">બહાર નીકળો</string>
+    <string name="better">વધુ સારું મેળવવા માટે Experece</string>
+    <string name="upgrade">તમારા ખાતાને સુધારો</string>
+</resources>

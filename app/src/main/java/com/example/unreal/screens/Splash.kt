@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.unreal.R
 import com.example.unreal.navigation.Routes
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 
 @Composable
@@ -38,9 +39,18 @@ fun Splash(navController: NavHostController){
                 .size(120.dp))
     }
     LaunchedEffect(key1 = true){
-        delay(3000)
+        delay(2000)
 
-        navController.navigate(Routes.BottomNav.routes)
+        if(FirebaseAuth.getInstance().currentUser!=null)
+        navController.navigate(Routes.BottomNav.routes){
+            popUpTo(navController.graph.startDestinationId)
+            launchSingleTop = true
+        }
+        else
+            navController.navigate(Routes.Login.routes){
+                popUpTo(navController.graph.startDestinationId)
+                launchSingleTop = true
+            }
     }
 
 

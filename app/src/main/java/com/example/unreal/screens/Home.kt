@@ -21,27 +21,35 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import com.example.unreal.R
+import com.example.unreal.navigation.Routes
+import com.example.unreal.viewmodel.AuthViewModel
 
 
-@Preview
+
 @Composable
-fun Home(){
-    Column (
+fun Home(navHostController: NavHostController) {
+    Column(
         Modifier
             .fillMaxSize()
             .fillMaxHeight()
@@ -51,12 +59,15 @@ fun Home(){
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
             Image(
-                painter = painterResource(id = R.drawable.profile),
+                painter = painterResource(id = R.drawable.nashdabre),
                 contentDescription = null,
                 modifier = Modifier
-                    .width(100.dp)
+                    .width(100.dp).clip(CircleShape)
                     .height(100.dp)
                     .clickable {}
+                    .background(Color.LightGray)
+
+
             )
 
             Column(
@@ -68,13 +79,13 @@ fun Home(){
                 horizontalAlignment = Alignment.Start
             ) {
                 Text(
-                    text = "Abby Sandet",
+                    text = "Nash Dabre",
                     color = androidx.compose.ui.graphics.Color.Black,
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = "abbysandet@gmail.com",
+                    text = "nashdabre2@gmail.com",
                     color = androidx.compose.ui.graphics.Color.Black,
                     fontSize = 18.sp,
                     modifier = Modifier.padding(top = 14.dp)
@@ -162,6 +173,7 @@ fun Home(){
                             shape = RoundedCornerShape(bottomEnd = 20.dp, bottomStart = 20.dp)
                         ), contentAlignment = Alignment.Center
                 ) {
+
                     Text(
                         text = "Test Lab",
                         fontSize = 14.sp,
@@ -170,7 +182,7 @@ fun Home(){
                     )
                 }
             }
-            Column(
+            /* Column(
                 Modifier
                     .weight(0.5f)
                     .padding(end = 12.dp)
@@ -215,8 +227,8 @@ fun Home(){
                         fontWeight = FontWeight.Bold,
                         color = Color(android.graphics.Color.parseColor("#7869e5"))
                     )
-                }
-            }
+                }*/
+
             Column(
                 Modifier
                     .weight(0.5f)
@@ -244,6 +256,11 @@ fun Home(){
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(7.dp)
+                            .clickable {
+                                navHostController.navigate(Routes.Doctor.routes) {
+                                    popUpTo(navHostController.graph.startDestinationId)
+                                    launchSingleTop = true
+                                }}
                     )
                 }
                 Box(
@@ -260,11 +277,19 @@ fun Home(){
                         text = "Find Doctor",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(android.graphics.Color.parseColor("#7869e5"))
+                        color = Color(android.graphics.Color.parseColor("#7869e5")),
+                        modifier = Modifier.clickable {
+                            navHostController.navigate(Routes.Doctor.routes) {
+                                popUpTo(navHostController.graph.startDestinationId)
+                                launchSingleTop = true
+                            }
+
+                        }
                     )
                 }
             }
         }
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -298,6 +323,13 @@ fun Home(){
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(7.dp)
+                            .clickable {
+                                navHostController.navigate(Routes.Aritcel.routes) {
+                                    popUpTo(navHostController.graph.startDestinationId)
+                                    launchSingleTop = true
+                                }
+
+                            }
                     )
                 }
                 Box(
@@ -314,11 +346,18 @@ fun Home(){
                         text = "Health Articels",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(android.graphics.Color.parseColor("#7869e5"))
+                        color = Color(android.graphics.Color.parseColor("#7869e5")),
+                        modifier = Modifier.clickable {
+                            navHostController.navigate(Routes.Aritcel.routes) {
+                                popUpTo(navHostController.graph.startDestinationId)
+                                launchSingleTop = true
+                            }
+
+                        }
                     )
                 }
             }
-            Column(
+            /*Column(
                 Modifier
                     .weight(0.5f)
                     .padding(end = 12.dp)
@@ -364,7 +403,7 @@ fun Home(){
                         color = Color(android.graphics.Color.parseColor("#7869e5"))
                     )
                 }
-            }
+            }*/
             Column(
                 Modifier
                     .weight(0.5f)
@@ -404,11 +443,24 @@ fun Home(){
                             shape = RoundedCornerShape(bottomEnd = 20.dp, bottomStart = 20.dp)
                         ), contentAlignment = Alignment.Center
                 ) {
+                    val authViewModel: AuthViewModel = viewModel()
+                    val firebaseUser by authViewModel.firebaseUser.observeAsState(null)
+
+
+
+
                     Text(
                         text = "Logout",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(android.graphics.Color.parseColor("#7869e5"))
+                        color = Color(android.graphics.Color.parseColor("#7869e5")),
+                        modifier = Modifier.clickable {
+                            navHostController.navigate(Routes.Login.routes) {
+                                popUpTo(navHostController.graph.startDestinationId)
+                                launchSingleTop = true
+                            }
+
+                        }
                     )
                 }
             }
@@ -416,12 +468,16 @@ fun Home(){
 
 
 
+
+
+
+
         ConstraintLayout(
 
-            modifier= Modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp)
-                .height(120.dp)
+                .height(100.dp)
                 .background(
                     brush = Brush.horizontalGradient(
                         colors = listOf(
@@ -434,13 +490,15 @@ fun Home(){
                 )
         ) {
             val (img, text1, text2) = createRefs()
-            Image(modifier = Modifier.constrainAs(img) {
-                top.linkTo(parent.top)
-                start.linkTo(parent.start)
-            },
+            Image(
+                modifier = Modifier.constrainAs(img) {
+                    top.linkTo(parent.top)
+                    start.linkTo(parent.start)
+                },
                 painter = painterResource(id = R.drawable.arc),
-                contentDescription = "")
-            Text(text = "To Get Faster Appointment",
+                contentDescription = ""
+            )
+            Text(text = "To Get Better Expereince",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 color = androidx.compose.ui.graphics.Color.White,
@@ -468,11 +526,10 @@ fun Home(){
         }
 
 
-
     }
-
-
-
-
-
 }
+
+
+
+
+

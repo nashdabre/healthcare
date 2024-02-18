@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">unreal</string>
+    <string name="login">Login</string>
+    <string name="new_user">New User? Create Account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Nash Dabre</string>
+    <string name="search_bar">Searching for...</string>
+    <string name="testlab">Test Lab</string>
+    <string name="finddoc">Find Doctor</string>
+    <string name="healthart">Health Articels</string>
+    <string name="logout">Logout</string>
+    <string name="better">To Get Better Expereince</string>
+    <string name="upgrade">Upgrade Your Account</string>
 </resources>
