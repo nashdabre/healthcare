@@ -119,52 +119,6 @@ fun articel(navHostController: NavHostController) {
                     )
                 }
             }
-            /* Column(
-            Modifier
-                .weight(0.5f)
-                .padding(end = 12.dp)
-                .background(
-                    color = androidx.compose.ui.graphics.Color.White,
-                    shape = RoundedCornerShape(20.dp)
-                )
-                .padding(top = 16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Box(
-                modifier = Modifier
-                    .height(65.dp)
-                    .width(75.dp)
-                    .background(
-                        color = Color(android.graphics.Color.parseColor("#7868e5")),
-                        shape = RoundedCornerShape(20.dp)
-                    ),
-                contentAlignment = Alignment.Center
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.trolley),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(7.dp)
-                )
-            }
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp)
-                    .height(40.dp)
-                    .background(
-                        color = Color(android.graphics.Color.parseColor("#Dad9ff")),
-                        shape = RoundedCornerShape(bottomEnd = 20.dp, bottomStart = 20.dp)
-                    ), contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "Buy Medicine",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(android.graphics.Color.parseColor("#7869e5"))
-                )
-            }*/
 
             Column(
                 Modifier
